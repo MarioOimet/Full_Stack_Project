@@ -1,3 +1,3 @@
 ActiveAdmin.register Finance do
- permit_params :finance_rating, :cra_submission, :date_cra_submitted
+ permit_params :finance_rating, :cra_submission, :date_cra_submitted, :Business_id
 end

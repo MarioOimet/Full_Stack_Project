@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107025652) do
+ActiveRecord::Schema.define(version: 20171107032639) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 20171107025652) do
     t.date "date_due"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "Contract_id"
+    t.integer "Student_id"
+    t.integer "Rating_id"
+    t.integer "Enquiry_id"
+    t.index ["Contract_id"], name: "index_contracts_on_Contract_id"
+    t.index ["Enquiry_id"], name: "index_contracts_on_Enquiry_id"
+    t.index ["Rating_id"], name: "index_contracts_on_Rating_id"
+    t.index ["Student_id"], name: "index_contracts_on_Student_id"
   end
 
   create_table "enquiries", force: :cascade do |t|
@@ -77,6 +85,10 @@ ActiveRecord::Schema.define(version: 20171107025652) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "Enquiry_id"
+    t.integer "Category_id"
+    t.index ["Category_id"], name: "index_enquiries_on_Category_id"
+    t.index ["Enquiry_id"], name: "index_enquiries_on_Enquiry_id"
   end
 
   create_table "finances", force: :cascade do |t|
@@ -85,6 +97,8 @@ ActiveRecord::Schema.define(version: 20171107025652) do
     t.date "date_cra_submitted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "Business_id"
+    t.index ["Business_id"], name: "index_finances_on_Business_id"
   end
 
   create_table "ratings", force: :cascade do |t|
