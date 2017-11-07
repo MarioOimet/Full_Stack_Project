@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  has_one :Enquiry
+  #has_one :Enquiry
 end

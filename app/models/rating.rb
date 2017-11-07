@@ -1,3 +1,3 @@
 class Rating < ApplicationRecord
-  has_one :Contract
+  #has_one :Contract
 end
