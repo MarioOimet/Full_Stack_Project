@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  finance_rating: MyString
+  cra_submission: MyString
+  date_cra_submitted: 2017-11-06
+
+two:
+  finance_rating: MyString
+  cra_submission: MyString
+  date_cra_submitted: 2017-11-06
