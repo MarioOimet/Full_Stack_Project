@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107025519) do
+ActiveRecord::Schema.define(version: 20171107025652) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -41,6 +41,70 @@ ActiveRecord::Schema.define(version: 20171107025519) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name_business"
+    t.string "first_name_owner"
+    t.string "last_name_owner"
+    t.string "middle_name_owner"
+    t.string "address_business"
+    t.string "city_business"
+    t.string "province_business"
+    t.string "postal_code_business"
+    t.string "phone_number_business"
+    t.string "e_mail_business"
+    t.string "pass_word"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "description_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.string "description"
+    t.date "date_due"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "enquiries", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "finances", force: :cascade do |t|
+    t.string "finance_rating"
+    t.string "cra_submission"
+    t.date "date_cra_submitted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.string "descrtiption_rating"
+    t.integer "stars"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "first_name_student"
+    t.string "last_name_student"
+    t.string "middle_name_student"
+    t.string "city_student"
+    t.string "province_student"
+    t.string "phone_number_student"
+    t.string "e_mail_student"
+    t.string "pass_phrase"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
