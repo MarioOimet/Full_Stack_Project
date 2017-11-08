@@ -1,2 +1,18 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>All Enquiries</h1>
+
+<% @busy.each do |bus|%>
+  <div class="business">
+    <h2>BUSINESS: <%= bus.name_business %></h2>
+    <p><%= bus.address_business %></p>
+    <p><%= bus.city_business %></p>
+    <p><%= bus.phone_number_business %></p>
+
+    <% bus.enquiries.each do |enq| %>
+      <div class="enquiries">
+        <h2>ENQUIRY: <%= enq.title %></h2>
+        <p><%= enq.content%></p>
+      </br>
+      </div>
+   <% end %>
+  </div>
+<% end %>
