@@ -1,5 +1,10 @@
 <h1>All Enquiries</h1>
 
+<ul>
+  <li><%= link_to 'about', about_path %></li>
+  <li><%= link_to 'contacts', contacts_path %></li>
+</ul>
+
 <% @busy.each do |bus|%>
   <div class="business">
     <h2>BUSINESS: <%= bus.name_business %></h2>
