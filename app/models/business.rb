@@ -4,6 +4,6 @@ class Business < ApplicationRecord
   #has_one :Finance
 
   def name
-    name_busines
+    name_business
   end
 end
