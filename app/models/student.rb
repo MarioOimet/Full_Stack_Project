@@ -1,6 +1,9 @@
 class Student < ApplicationRecord
   has_many :contracts
 
+  validates :first_name_student, :last_name_student, :city_student, :province_student, :phone_number_student, :e_mail_student, :pass_phrase, presence:true
+  validates :pass_phrase, :length => { :in => 4..10 }
+  validates :e_mail_student, :pass_phrase, :uniqueness => true
   def name
     last_name_student
   end
