@@ -1,0 +1,15 @@
+<h1>You were looking for...<strong><%= params[:search_keywords] %></strong></h1>
+
+<% if @enquiry_found.empty? %>
+  <p>No results at this time!</p>
+<% end %>
+
+<h2>
+<%= paginate @enquiry_found %>
+<%= page_entries_info @enquiry_found %>
+</h2>
+<h1><%= link_to 'Back', home_path %></h1>
+<br/>
+<%= render partial: 'common/enquiry',
+           collection: @enquiry_found,
+           locals: {single_enquiry: false} %>

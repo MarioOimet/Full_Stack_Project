@@ -1,0 +1,19 @@
+<div class="business"
+<p>
+  <h1><strong>ENQUIRY: </strong></h1>
+    <div class="enquiry">
+      <% if single_enquiry %>
+        <h1><%= link_to enquiry.title, show_path(enquiry) %><h1>
+        <h2><strong>Business: </strong><%= enquiry.business.name_business %></h2>
+        <p><%= enquiry.content %></p>
+        <h3><strong>CATEGORY: </strong><%= enquiry.category.description_category %></h3>
+      <% else %>
+        <h1><%= enquiry.title %></h1>
+        <h2><strong>Business: </strong><%= enquiry.business.name_business %></h2>
+        <p><%= enquiry.business.address_business %></p>
+        <p><%= enquiry.business.phone_number_business %></p>
+        <p><%= enquiry.business.e_mail_business %></p>
+        <h1><%= enquiry.content %></h1>
+      <% end %>
+    </div>
+</p>

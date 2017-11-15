@@ -3,25 +3,22 @@
 <ul>
   <li><%= link_to 'about', about_path %></li>
   <li><%= link_to 'contacts', contacts_path %></li>
+  <li><%= link_to 'search', search_path %></li>
 </ul>
 
-<%= paginate @busy %>
-
+<h2>
+<%= paginate @enquiry %>
+<%= page_entries_info @enquiry %>
+</h2>
 <br/>
-<% @busy.each do |bus|%>
-  <div class="business">
-    <h2>BUSINESS: <%= bus.name_business %></h2>
-    <p><%= bus.address_business %></p>
-    <p><%= bus.city_business %></p>
-    <p><%= bus.phone_number_business %></p>
+<p>
+  <%= form_tag search_results_path, method: 'get' do %>
+    <%= text_field_tag :search_keywords %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</p>
+<br/>
 
-    <% bus.enquiries.each do |enq| %>
-      <div class="enquiries">
-        <h2>ENQUIRY: <%= enq.title %></h2>
-        <p><%= enq.content%></p>
-      </br>
-      </div>
-   <% end %>
-  </div>
-<% end %>
-<%= page_entries_info @busy %>
+<%= render partial: 'common/enquiry',
+           collection: @enquiry,
+           locals: {single_enquiry: true} %>
