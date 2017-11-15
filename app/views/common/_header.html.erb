@@ -1,3 +1,9 @@
 <header>
   <p><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
+  <p>
+    <%= form_tag search_results_path, method: 'get' do %>
+      <%= text_field_tag :search_keywords %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </p>
 </header>

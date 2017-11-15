@@ -10,14 +10,6 @@
 <%= page_entries_info @enquiry %>
 </h2>
 <br/>
-<p>
-  <%= form_tag search_results_path, method: 'get' do %>
-    <%= text_field_tag :search_keywords %>
-    <%= submit_tag "Search" %>
-  <% end %>
-</p>
-<br/>
-
 <%= render partial: 'common/enquiry',
            collection: @enquiry,
            locals: {single_enquiry: true} %>
