@@ -6,7 +6,7 @@
         <h1><%= link_to enquiry.title, show_path(enquiry) %><h1>
         <h2><strong>Business: </strong><%= enquiry.business.name_business %></h2>
         <p><%= enquiry.content %></p>
-        <h3><strong>CATEGORY: </strong><%= enquiry.category.description_category %></h3>
+        <p><%= image_tag enquiry.category.image %></p>
       <% else %>
         <h1><%= enquiry.title %></h1>
         <h2><strong>Business: </strong><%= enquiry.business.name_business %></h2>
@@ -14,7 +14,7 @@
         <p><%= enquiry.business.phone_number_business %></p>
         <p><%= enquiry.business.e_mail_business %></p>
         <h1><%= enquiry.content %></h1>
-        <p><%= image_tag enquiry.category.image %></p>
+        <h3><strong>CATEGORY: </strong><%= enquiry.category.description_category %></h3>
       <% end %>
     </div>
 </p>
