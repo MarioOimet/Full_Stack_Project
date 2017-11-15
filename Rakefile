@@ -4,4 +4,3 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
-/Users/MarioRedRiver/Desktop/Project/mario_final/Rakefile
