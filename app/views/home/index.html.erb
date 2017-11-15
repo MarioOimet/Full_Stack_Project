@@ -5,6 +5,7 @@
   <li><%= link_to 'contacts', contacts_path %></li>
 </ul>
 
+<%= paginate@busy %>
 <% @busy.each do |bus|%>
   <div class="business">
     <h2>BUSINESS: <%= bus.name_business %></h2>

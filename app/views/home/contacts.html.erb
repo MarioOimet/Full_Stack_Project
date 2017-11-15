@@ -1,6 +1,15 @@
-<h2>Contacts</h2
 <ul>
   <li><%= link_to 'home', home_path %></li>
   <li><%= link_to 'about', about_path %></li>
 </ul>
-<p>This will be Contacts page</p>
+
+<h2>Contacts</h2
+  <% @info.each do |contact|%>
+    <div class="contacts">
+      <h1><%= contact.title %></h1>
+      <p><%= contact.phone_number_info %><p>
+      <p><%= contact.address %><p>
+      <p><%= contact.city %><p>
+      <p><%= contact.postal_code_info %><p>
+      <p><%= contact.email_info %><p>
+  <% end %>

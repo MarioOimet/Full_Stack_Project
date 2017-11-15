@@ -1,6 +1,10 @@
-<h2>About</h2
 <ul>
   <li><%= link_to 'home', home_path %></li>
   <li><%= link_to 'contacts', contacts_path %></li>
 </ul>
-<p>This will be About our Company</p>
+
+<h2>About Us</h2
+<% @info.each do |about|%>
+  <div class="about">
+    <h2><%= about.about %></h2>
+<% end %>
