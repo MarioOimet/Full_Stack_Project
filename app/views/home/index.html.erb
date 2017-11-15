@@ -1,14 +1,15 @@
-<h1>All Enquiries</h1>
 
+<h1>All Enquiries</h1>
 <ul>
   <li><%= link_to 'about', about_path %></li>
   <li><%= link_to 'contacts', contacts_path %></li>
 </ul>
 
 <h2>
-<%= paginate @enquiry %>
-<%= page_entries_info @enquiry %>
+  <%= paginate @enquiry %>
+  <%= page_entries_info @enquiry %>
 </h2>
+
 <br/>
 <%= render partial: 'common/enquiry',
            collection: @enquiry,

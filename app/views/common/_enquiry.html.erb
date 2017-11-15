@@ -6,7 +6,7 @@
         <h1><%= link_to enquiry.title, show_path(enquiry) %><h1>
         <h2><strong>Business: </strong><%= enquiry.business.name_business %></h2>
         <p><%= enquiry.content %></p>
-        <p><%= image_tag enquiry.category.image %></p>
+        <p><img class="card-img-top" src="<%=enquiry.category.image %>" alt=""></p>
       <% else %>
         <h1><%= enquiry.title %></h1>
         <h2><strong>Business: </strong><%= enquiry.business.name_business %></h2>

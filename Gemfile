@@ -62,3 +62,5 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'kaminari'
 
 gem 'bootstrap-sass'
+
+gem 'carrierwave', '~> 1.0'
