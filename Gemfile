@@ -61,4 +61,4 @@ gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 gem 'kaminari'
 
-gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'bootstrap-sass'
