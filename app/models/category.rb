@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   #has_one :Enquiry
-  validates :description_category, presence:true
+  validates :description_category, :image, presence:true
   def name
     description_category
   end
