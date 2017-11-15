@@ -58,4 +58,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 
-gem 'kaminari', github: 'kaminari'
+gem 'kaminari'
