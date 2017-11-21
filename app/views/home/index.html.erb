@@ -1,16 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<h1>All Enquiries</h1>
-<ul>
-  <li><%= link_to 'about', about_path %></li>
-  <li><%= link_to 'contacts', contacts_path %></li>
-</ul>
+  <head>
 
-<h2>
-  <%= paginate @enquiry %>
-  <%= page_entries_info @enquiry %>
-</h2>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<br/>
-<%= render partial: 'common/enquiry',
-           collection: @enquiry,
-           locals: {single_enquiry: true} %>
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="app/assets/stylesheets/heroic-features.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <!-- Jumbotron Header -->
+      <header class="jumbotron my-4">
+        <h1 class="display-3">A Warm Welcome!</h1>
+        <p class="lead"><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
+        <h2><%= page_entries_info @enquiry %></h2>
+        <p class="m-0 text-center text-white"><%= paginate @enquiry %></p>
+        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+      </header>
+      <!-- Page Features -->
+      <div class="row text-center">
+        <% @enquiry.each do |enquiry| %>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="<%=enquiry.category.image %>" alt="">
+            <div class="card-body">
+              <h4 class="card-title"><%= enquiry.business.name_business %></h4>
+              <p class="card-text"><%= enquiry.content %></p>
+            </div>
+            <div class="card-footer">
+              <a class="btn btn-primary" <%= link_to enquiry.title, show_path(enquiry) %></a>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="app/assets/javascripts/jquery.min.js"></script>
+    <script src="app/assets/javascripts/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
