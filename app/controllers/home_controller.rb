@@ -23,9 +23,9 @@ class HomeController < ApplicationController
     @category = Category.all
 
     if params[:category_m] == ''
-      @enquiry_found = Enquiry.includes(:category, :business).keyword_search(params[:search_keywords]).page(params[:page]).per(3)
+      @enquiry_found = Enquiry.includes(:category, :business).keyword_search(params[:search_keywords]).page(params[:page]).per(4)
     else
-      @enquiry_found = Enquiry.includes(:category, :business).where("Category_id LIKE ?", params[:category_m]).keyword_search(params[:search_keywords]).page(params[:page]).per(3)
+      @enquiry_found = Enquiry.includes(:category, :business).where("Category_id LIKE ?", params[:category_m]).keyword_search(params[:search_keywords]).page(params[:page]).per(4)
     end
   end
 end

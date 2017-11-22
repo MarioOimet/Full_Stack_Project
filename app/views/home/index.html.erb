@@ -25,7 +25,7 @@
       <header class="jumbotron my-4">
         <h1 class="display-3">A Warm Welcome!</h1>
         <p class="lead"><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
-        <h2><%= page_entries_info @enquiry %></h2>
+        <h2 class="card-title"><%= page_entries_info @enquiry %></h2>
         <p class="m-0 text-center text-white"><%= paginate @enquiry %></p>
         <a class="btn btn-primary btn-lg" <%= link_to 'JUNIOR WIZARDS', about_path %></a>
       </header>

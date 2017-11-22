@@ -1,15 +1,58 @@
-<h1>You were looking for...<strong><%= params[:search_keywords] %></strong></h1>
-
-<% if @enquiry_found.empty? %>
-  <p>No results at this time!</p>
-<% end %>
-
-<h2>
-<%= paginate @enquiry_found %>
-<%= page_entries_info @enquiry_found %>
-</h2>
-<h1><%= link_to 'Back', home_path %></h1>
 <br/>
-<%= render partial: 'common/enquiry',
-           collection: @enquiry_found,
-           locals: {single_enquiry: false} %>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="app/assets/stylesheets/heroic-features.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <h2 class="card-title"><%= page_entries_info @enquiry_found %></h2>
+      <div class="row text-center">
+        <% @enquiry_found.each do |found| %>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <h1 class="card-title" >...<%= params[:search_keywords] %>...</h1>
+            <% if @enquiry_found.empty? %>
+              <p "card-text">No results at this time!</p>
+            <% end %>
+            <img class="card-img-top" src="<%=found.category.image %>" alt="">
+            <div class="card-body">
+              <h4 class="card-title"><%= found.title %></h4>
+              <p class="card-text"><%= found.content %></p>
+              <p class="card-text">CATEGORY: <%= found.category.description_category %></p>
+            </div>
+            <div class="card-footer">
+              <a class="btn btn-primary" <%= link_to found.title, show_path(found) %></a>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <p class="m-0 text-center text-white"><%= paginate @enquiry_found %></p>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="app/assets/javascripts/jquery.min.js"></script>
+    <script src="app/assets/javascripts/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
