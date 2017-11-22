@@ -1,7 +1,50 @@
-<h2>Particular Business</h2>
+<br/>
+<!DOCTYPE html>
+<html lang="en">
 
-<%= render partial: 'common/enquiry',
-           object: @one,
-           locals: {single_enquiry: false} %>
+  <head>
 
-<h1><%= link_to 'Back', home_path %></h1>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="app/assets/stylesheets/heroic-features.css" rel="stylesheet">
+
+  </head>
+
+<body>
+  <!-- Page Content -->
+  <div class="container">
+    <!-- Page Features -->
+    <div class="row text-center">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="<%= @one.category.image %>" alt="">
+          <div class="card-body">
+            <h1 class="card-title"><%= @one.title %></h1>
+            <h2 class="card-title"><%= @one.business.name_business %></h2>
+            <p class="card-text"><%= @one.business.address_business %></p>
+            <p class="card-text"><%= @one.business.phone_number_business %></p>
+            <p class="card-text"><%= @one.business.e_mail_business %></p>
+            <h2 class="card-title"><%= @one.content %></h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="app/assets/javascripts/jquery.min.js"></script>
+  <script src="app/assets/javascripts/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

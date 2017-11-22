@@ -27,7 +27,7 @@
         <p class="lead"><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
         <h2><%= page_entries_info @enquiry %></h2>
         <p class="m-0 text-center text-white"><%= paginate @enquiry %></p>
-        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+        <a class="btn btn-primary btn-lg" <%= link_to 'JUNIOR WIZARDS', about_path %></a>
       </header>
       <!-- Page Features -->
       <div class="row text-center">
