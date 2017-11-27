@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about', as: 'about'
   get '/contacts', to: 'home#contacts', as: 'contacts'
 
+  get '/services', to: 'contract#services', as: 'services'
+
   get '/search' => 'home#search', as: 'search'
   get '/search_results' => 'home#search_results', as: 'search_results'
 
