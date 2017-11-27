@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :businesses
   get 'show/:id', to: 'home#show', as: 'show', id:/\d+/
   root to: 'home#index', as: 'home'
 
