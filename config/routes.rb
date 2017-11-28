@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about', as: 'about'
   get '/contacts', to: 'home#contacts', as: 'contacts'
 
-  get '/services', to: 'contract#services', as: 'services'
 
   get '/search' => 'home#search', as: 'search'
   get '/search_results' => 'home#search_results', as: 'search_results'
@@ -24,7 +23,11 @@ Rails.application.routes.draw do
 
   devise_for :businesses, skip: :all
 
-# devise_for :businesses, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+  devise_scope :business do
+    get '/services', to: 'business/registration#sign_up'
+  end
+
+  # devise_for :businesses, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
