@@ -1,8 +1,62 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="field">
+    <%= f.label :name_business %><br/>
+    <%= f.text_field :name_business, autofocus: true %>
+  </div>
+
+  <br/>
+  <div class="field">
+    <%= f.label :first_name_owner %><br/>
+    <%= f.text_field :first_name_owner, autofocus: true %>
+  </div>
+
+  <br/>
+  <div class="field">
+    <%= f.label :last_name_owner %><br/>
+    <%= f.text_field :last_name_owner, autofocus: true %>
+  </div>
+
+  <br/>
+  <div class="field">
+    <%= f.label :middle_name_owner %><br/>
+    <%= f.text_field :middle_name_owner, autofocus: true %>
+  </div>
+
+  <br/>
+  <div class="field">
+    <%= f.label :address_business %><br/>
+    <%= f.text_field :address_business, autofocus: true %>
+  </div>
+
+  <br/>
+  <div class="field">
+    <%= f.label :city_business %><br/>
+    <%= f.text_field :city_business, autofocus: true %>
+  </div>
+
+  <br/>
+  <div class="field">
+    <%= f.label :province_business %><br/>
+    <%= f.text_field :province_business, autofocus: true %>
+  </div>
+
+  <br/>
+  <div class="field">
+    <%= f.label :postal_code_business %><br/>
+    <%= f.text_field :postal_code_business, autofocus: true %>
+  </div>
+
+  <br/>
+  <div class="field">
+    <%= f.label :phone_number_business %><br/>
+    <%= f.text_field :phone_number_business, autofocus: true %>
+  </div>
+
+  <br />
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -24,6 +78,7 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+  <br/>
 <% end %>
 
 <%= render "devise/shared/links" %>

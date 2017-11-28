@@ -18,6 +18,8 @@
 
   </head>
 
+  <%= render partial: 'common/header' %>
+  <%= link_to 'LOGOUT', destroy_business_session_path, :method => 'delete' %>
   <body>
     <!-- Page Content -->
     <div class="container">
