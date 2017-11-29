@@ -1,0 +1,9 @@
+<table>
+<% @mycart.each do |cart| %>
+  <% @enquiry.each do |enq| %>
+    <% if cart == enq.id %>
+      <tr><%= enq.title %></tr>
+    <% end %>
+  <% end %>
+<% end %>
+</table>

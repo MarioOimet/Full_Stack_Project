@@ -4,7 +4,7 @@ class Category < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  validates :description_category, :image, presence:true
+  validates :description_category, :image, :service_fee, presence:true
 
   def name
     description_category

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get '/cart/index'
+
+  post '/cart/:id' => 'cart#create', as: 'cart'
+
+  get 'cart/destroy'
 
   root to: 'home#index', as: 'home'
 

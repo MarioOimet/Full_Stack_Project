@@ -4,6 +4,6 @@ class Contract < ApplicationRecord
   belongs_to :rating, :class_name => 'Rating', :foreign_key => 'Rating_id'
   belongs_to :enquiry, :class_name => 'Enquiry', :foreign_key => "Enquiry_id"
 
-  validates :description, presence:true
-  
+  validates :description, :date_due, presence:true
+
 end
