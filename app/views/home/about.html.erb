@@ -1,7 +1,44 @@
-<%= render partial: 'common/header' %>
-<br/>
-<h2>About Us</h2
-<% @info.each do |about|%>
-  <div class="about">
-    <h2><%= about.about %></h2>
-<% end %>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="app/assets/stylesheets/heroic-features.css" rel="stylesheet">
+
+  </head>
+
+  <%= render partial: 'common/header' %>
+
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <!-- Page Features -->
+        <% @info.each do |about|%>
+          <header class="jumbotron my-4">
+            <h1 class="display-3"><%= about.title %></h1>
+            <p class="lead"><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
+            <p class="m-0 text-center text-black"><%= about.about %></p>
+          </header>
+        <% end %>
+    </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="app/assets/javascripts/jquery.min.js"></script>
+    <script src="app/assets/javascripts/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>
