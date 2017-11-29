@@ -19,12 +19,16 @@
   </head>
 
   <%= render partial: 'common/header' %>
-  <%= link_to 'LOGOUT', destroy_business_session_path, :method => 'delete' %>
+
   <body>
     <!-- Page Content -->
     <div class="container">
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4">
+        <% if business_signed_in? %>
+          <h2 class="card-title">Hello Again! <%= current_business.last_name_owner %></h2>
+          <a class="btn btn-primary btn-lg" <%= link_to 'LOGOUT', destroy_business_session_path, :method => 'delete' %></a>
+        <% end %>
         <h1 class="display-3">A Warm Welcome!</h1>
         <p class="lead"><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
         <h2 class="card-title"><%= page_entries_info @enquiry %></h2>
@@ -45,14 +49,16 @@
               <a class="btn btn-primary" <%= link_to enquiry.title, show_path(enquiry) %></a>
             </div>
             <div class="card-footer">
-              <%= form_tag cart_path(id: enquiry.id), method: 'post' do %>
-                <%= submit_tag "Make a Contract" %>
+              <% if business_signed_in? && current_business[:id] == enquiry.business.id %>
+                <%= form_tag cart_path(id: enquiry.id), method: 'post' do %>
+                  <%= submit_tag "Make a Contract" %>
+                <% end %>
               <% end %>
             </div>
           </div>
         </div>
-        <% end %>
-      </div>
+      <% end %>
+    </div>
       <!-- /.row -->
     </div>
     <!-- /.container -->

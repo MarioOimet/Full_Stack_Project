@@ -1,9 +1,24 @@
-<table>
-<% @mycart.each do |cart| %>
-  <% @enquiry.each do |enq| %>
-    <% if cart == enq.id %>
-      <tr><%= enq.title %></tr>
+<%= render partial: 'common/headerLog' %>
+<%= debug session[:cart] %>
+<h1 class="display-3">Shopping Cart!</h1>
+<div class="row text-center">
+  <% @mycart.each do |cart| %>
+    <% @enquiry.each do |enq| %>
+      <% if cart == enq.id %>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="<%= enq.category.image %>" alt="">
+            <div class="card-body">
+              <h4 class="card-title"><%= enq.business.name_business %></h4>
+              <p class="card-text"><%= enq.content %></p>
+              <p class="card-text">$<%= enq.category.service_fee %></p>
+                <%= form_tag destroy_path(id: enq.id), method: 'post' do %>
+                  <%= submit_tag "Don't make a contract" %>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
-</table>
+</div>

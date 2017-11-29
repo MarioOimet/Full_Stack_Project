@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   post '/cart/:id' => 'cart#create', as: 'cart'
 
-  get 'cart/destroy'
+  post '/cart/destroy/:id' => 'cart#destroy', as: 'destroy'
 
   root to: 'home#index', as: 'home'
 
