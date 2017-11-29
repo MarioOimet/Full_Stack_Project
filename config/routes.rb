@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   devise_for :businesses, skip: :all
 
   devise_scope :business do
-    get '/services', to: 'business/registration#sign_up'
+    get '/services', to: 'businesses/sessions#new'
   end
 
   # devise_for :businesses, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }

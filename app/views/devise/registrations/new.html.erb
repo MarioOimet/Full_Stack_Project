@@ -35,14 +35,14 @@
 
   <br/>
   <div class="field">
-    <%= f.label :city_business %><br/>
-    <%= f.text_field :city_business, autofocus: true %>
+    <%= f.label :province %><br/>
+    <%= f.collection_select :Province_id, Province.order(:name), :id, :name, prompt: 'Select Province' %>
   </div>
 
   <br/>
   <div class="field">
-    <%= f.label :province_business %><br/>
-    <%= f.text_field :province_business, autofocus: true %>
+    <%= f.label :city_business %><br/>
+    <%= f.text_field :city_business, autofocus: true %>
   </div>
 
   <br/>
