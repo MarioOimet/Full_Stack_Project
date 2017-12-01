@@ -1,0 +1,2 @@
+module PlaceContractHelper
+end

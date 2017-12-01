@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'charges/new'
+
+  get 'charges/create'
+
   get '/cart/index'
 
   post '/cart/:id' => 'cart#create', as: 'cart'
@@ -32,6 +36,8 @@ Rails.application.routes.draw do
     get '/services', to: 'businesses/sessions#new'
   end
 
+  resources :charges, only: [:new, :create]
+  
   # devise_for :businesses, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

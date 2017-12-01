@@ -15,6 +15,10 @@
                 <%= form_tag destroy_path(id: enq.id), method: 'post' do %>
                   <%= submit_tag "Don't make a contract" %>
                 <% end %>
+                <br/>
+                <%= form_tag destroy_path(id: enq.id), method: 'post' do %>
+                  <%= submit_tag "Procceed to Checkout" %>
+                <% end %>
             </div>
           </div>
         </div>
