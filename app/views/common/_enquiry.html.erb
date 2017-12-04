@@ -1,20 +1,32 @@
-<div class="business"
-<p>
-  <h1><strong>ENQUIRY: </strong></h1>
-    <div class="enquiry">
-      <% if single_enquiry %>
-        <h1><%= link_to enquiry.title, show_path(enquiry) %><h1>
-        <h2><strong>Business: </strong><%= enquiry.business.name_business %></h2>
-        <p><%= enquiry.content %></p>
-        <p><img class="card-img-top" src="<%=enquiry.category.image %>" alt=""></p>
-      <% else %>
-        <h1><%= enquiry.title %></h1>
-        <h2><strong>Business: </strong><%= enquiry.business.name_business %></h2>
-        <p><%= enquiry.business.address_business %></p>
-        <p><%= enquiry.business.phone_number_business %></p>
-        <p><%= enquiry.business.e_mail_business %></p>
-        <h1><%= enquiry.content %></h1>
-        <h3><strong>CATEGORY: </strong><%= enquiry.category.description_category %></h3>
-      <% end %>
-    </div>
-</p>
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@post.errors.count, "error") %> prohibited
+        this post from being saved:</h2>
+    <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Title %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Content %><br />
+    <%= f.text_area :content %>
+  </div>
+
+  <div>
+    <%= enq.label :Category %><br/>
+    <%= enq.collection_select :Category_id, Category.order(:description_category), :id, :description_category, prompt: 'Select Category' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

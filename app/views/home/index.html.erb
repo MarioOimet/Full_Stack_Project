@@ -30,7 +30,7 @@
         <a class="btn btn-primary btn-lg" <%= link_to 'JUNIOR WIZARDS', about_path %></a>
         <% if business_signed_in? %>
           <a class="navbar-brand" >
-              <%= form_tag new_enquiries_path(id: @post), method: 'post' do %>
+              <%= form_tag enquiry_path(id: @post), method: 'post' do %>
                 <%= submit_tag "NEW ENQUIRY!" %>
               <% end %>
           </a>

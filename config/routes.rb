@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about', as: 'about'
   get '/contacts', to: 'home#contacts', as: 'contacts'
 
-  post '/new_enquiries/new', to: 'new_enquiries#new', as: 'enquiry'
+  post 'new_enquiries/new', to: 'new_enquiries#new', as: 'enquiry'
   resources :new_enquiries, only: [:new, :create]
 
   get '/search' => 'home#search', as: 'search'

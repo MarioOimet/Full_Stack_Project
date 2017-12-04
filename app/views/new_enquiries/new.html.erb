@@ -1,7 +1,7 @@
 <%= render partial: 'common/headerLog' %>
 <h2>Please Inquire about your problem, as we might be able to help!</h2>
 
-<%= form_for(:post, :url => {:action => 'create'}) do |enq| %>
+<%= form_for(:post, :url => new_enquiries_path) do |enq| %>
   <p>
     <%= enq.label :Title %></br>
     <%= enq.text_field :title %>
