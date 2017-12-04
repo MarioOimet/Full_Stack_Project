@@ -17,18 +17,12 @@
     <link href="app/assets/stylesheets/heroic-features.css" rel="stylesheet">
 
   </head>
-
   <%= render partial: 'common/header' %>
-
   <body>
     <!-- Page Content -->
     <div class="container">
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4">
-        <% if business_signed_in? %>
-          <h2 class="card-title">Hello Again! <%= current_business.last_name_owner %></h2>
-          <a class="btn btn-primary btn-lg" <%= link_to 'LOGOUT', destroy_business_session_path, :method => 'delete' %></a>
-        <% end %>
         <h1 class="display-3">A Warm Welcome!</h1>
         <p class="lead"><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
         <h2 class="card-title"><%= page_entries_info @enquiry %></h2>
@@ -38,27 +32,41 @@
       <!-- Page Features -->
       <div class="row text-center">
         <% @enquiry.each do |enquiry| %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="<%= enquiry.category.image %>" alt="">
-            <div class="card-body">
-              <h4 class="card-title"><%= enquiry.business.name_business %></h4>
-              <p class="card-text"><%= enquiry.content %></p>
+          <% if !business_signed_in? %>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card">
+                <img class="card-img-top" src="<%= enquiry.category.image %>" alt="">
+                <div class="card-body">
+                  <h4 class="card-title"><%= enquiry.business.name_business %></h4>
+                  <p class="card-text"><%= enquiry.content %></p>
+                </div>
+                <div class="card-footer">
+                  <a class="btn btn-primary" <%= link_to enquiry.title, show_path(enquiry) %></a>
+                </div>
+              </div>
             </div>
-            <div class="card-footer">
-              <a class="btn btn-primary" <%= link_to enquiry.title, show_path(enquiry) %></a>
+            <% end %>
+          <% if business_signed_in? && enquiry.business.id == current_business.id %>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card">
+                <img class="card-img-top" src="<%= enquiry.category.image %>" alt="">
+                <div class="card-body">
+                  <h4 class="card-title"><%= enquiry.business.name_business %></h4>
+                  <p class="card-text"><%= enquiry.content %></p>
+                </div>
+                <div class="card-footer">
+                  <a class="btn btn-primary" <%= link_to enquiry.title, show_path(enquiry) %></a>
+                </div>
+                <div class="card-footer">
+                  <%= form_tag cart_path(id: enquiry.id), method: 'post' do %>
+                    <%= submit_tag "Make a Contract" %>
+                  <% end %>
+                </div>
+              </div>
             </div>
-            <div class="card-footer">
-              <% if business_signed_in? && current_business[:id] == enquiry.business.id %>
-                <%= form_tag cart_path(id: enquiry.id), method: 'post' do %>
-                  <%= submit_tag "Make a Contract" %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+          <% end %>
+        <% end %>
+      </div>
       <!-- /.row -->
     </div>
     <!-- /.container -->

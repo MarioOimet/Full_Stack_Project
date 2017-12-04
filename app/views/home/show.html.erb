@@ -18,33 +18,33 @@
     <link href="app/assets/stylesheets/heroic-features.css" rel="stylesheet">
 
   </head>
-<%= render partial: 'common/header' %>
-<body>
-  <!-- Page Content -->
-  <div class="container">
-    <!-- Page Features -->
-    <div class="row text-center">
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card">
-          <img class="card-img-top" src="<%= @one.category.image %>" alt="">
-          <div class="card-body">
-            <h1 class="card-title"><%= @one.title %></h1>
-            <h2 class="card-title"><%= @one.business.name_business %></h2>
-            <p class="card-text"><%= @one.business.address_business %></p>
-            <p class="card-text"><%= @one.business.phone_number_business %></p>
-            <h2 class="card-title"><%= @one.content %></h2>
-            <p class="card-text">CATEGORY: <%= @one.category.description_category %></p>
+  <%= render partial: 'common/header' %>
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <!-- Page Features -->
+      <div class="row text-center">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="<%= @one.category.image %>" alt="">
+            <div class="card-body">
+              <h1 class="card-title"><%= @one.title %></h1>
+              <h2 class="card-title"><%= @one.business.name_business %></h2>
+              <p class="card-text"><%= @one.business.address_business %></p>
+              <p class="card-text"><%= @one.business.phone_number_business %></p>
+              <h2 class="card-title"><%= @one.content %></h2>
+              <p class="card-text">CATEGORY: <%= @one.category.description_category %></p>
+            </div>
           </div>
         </div>
       </div>
+      <!-- /.row -->
     </div>
-    <!-- /.row -->
-  </div>
-  <!-- /.container -->
+    <!-- /.container -->
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="app/assets/javascripts/jquery.min.js"></script>
-  <script src="app/assets/javascripts/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="app/assets/javascripts/jquery.min.js"></script>
+    <script src="app/assets/javascripts/bootstrap.bundle.min.js"></script>
 
-</body>
+  </body>
 </html>

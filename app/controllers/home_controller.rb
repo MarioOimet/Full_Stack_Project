@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
   def index
-    @enquiry = Enquiry.includes(:business, :category).all.page(params[:page]).per(4)
+    if !business_signed_in?
+      @enquiry = Enquiry.includes(:business, :category).all.page(params[:page]).per(4)
+    else
+      @enquiry = Enquiry.includes(:business, :category).where("Business_id LIKE ?", current_business).page(params[:page]).per(4)
+    end
     @category = Category.all
   end
 
