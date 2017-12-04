@@ -28,6 +28,13 @@
         <h2 class="card-title"><%= page_entries_info @enquiry %></h2>
         <p class="m-0 text-center text-white"><%= paginate @enquiry %></p>
         <a class="btn btn-primary btn-lg" <%= link_to 'JUNIOR WIZARDS', about_path %></a>
+        <% if business_signed_in? %>
+          <a class="navbar-brand" >
+              <%= form_tag new_enquiries_path(id: @post), method: 'post' do %>
+                <%= submit_tag "NEW ENQUIRY!" %>
+              <% end %>
+          </a>
+        <% end %>
       </header>
       <!-- Page Features -->
       <div class="row text-center">

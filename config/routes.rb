@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get '/contacts', to: 'home#contacts', as: 'contacts'
 
   post '/new_enquiries/new', to: 'new_enquiries#new', as: 'enquiry'
-  post '/new_enquiries/create/:id' => "new_enquiries#create", as 'create'
   resources :new_enquiries, only: [:new, :create]
 
   get '/search' => 'home#search', as: 'search'

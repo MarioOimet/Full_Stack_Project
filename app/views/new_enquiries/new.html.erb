@@ -1,1 +1,26 @@
+<%= render partial: 'common/headerLog' %>
+<h2>Please Inquire about your problem, as we might be able to help!</h2>
 
+<%= form_for(:post, :url => {:action => 'create'}) do |enq| %>
+  <p>
+    <%= enq.label :Title %></br>
+    <%= enq.text_field :title %>
+  </p>
+
+  </br>
+  <p>
+    <%= enq.label :Content %></br>
+    <%= enq.text_area :content %>
+  </p>
+
+  </br>
+  <p>
+    <%= enq.label :Category %><br/>
+    <%= enq.collection_select :Category_id, Category.order(:description_category), :id, :description_category, prompt: 'Select Category' %>
+  </div>
+
+  </br>
+  <p>
+    <%= enq.submit "Submit for evaluation!"%>
+  </p>
+<% end %>
