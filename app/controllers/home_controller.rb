@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+
   def index
     if !business_signed_in?
       @enquiry = Enquiry.includes(:business, :category).all.page(params[:page]).per(4)
