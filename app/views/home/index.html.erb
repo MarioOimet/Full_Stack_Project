@@ -27,14 +27,10 @@
         <p class="lead"><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
         <h2 class="card-title"><%= page_entries_info @enquiry %></h2>
         <p class="m-0 text-center text-white"><%= paginate @enquiry %></p>
-        <a class="btn btn-primary btn-lg" <%= link_to 'JUNIOR WIZARDS', about_path %></a>
         <% if business_signed_in? %>
-          <a class="navbar-brand" >
-              <%= form_tag enquiry_path(id: @post), method: 'post' do %>
-                <%= submit_tag "NEW ENQUIRY!" %>
-              <% end %>
-          </a>
+          <p><%= button_to "NEW ENQUIRY", new_new_enquiry_path, :method => "get" %></p>
         <% end %>
+        <p><%= button_to "JUNIOR WIZARDS", about_path, :method => "get" %></p>
       </header>
       <!-- Page Features -->
       <div class="row text-center">

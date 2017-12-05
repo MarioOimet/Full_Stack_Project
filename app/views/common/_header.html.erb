@@ -41,7 +41,7 @@
                 <a class="nav-link">WELCOME! <%= current_business.last_name_owner %></a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-primary btn-lg" <%= link_to 'LOGOUT', destroy_business_session_path, :method => 'delete' %></a>
+              <p><%= button_to "LOGOUT", destroy_business_session_path, :method => "delete" %></p>
             </li>
           <% end %>
         </ul>
