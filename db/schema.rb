@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205234948) do
+ActiveRecord::Schema.define(version: 20171206032751) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -95,10 +95,8 @@ ActiveRecord::Schema.define(version: 20171205234948) do
     t.datetime "updated_at", null: false
     t.integer "Business_id"
     t.integer "Category_id"
-    t.integer "Contract_id"
     t.index ["Business_id"], name: "index_enquiries_on_Business_id"
     t.index ["Category_id"], name: "index_enquiries_on_Category_id"
-    t.index ["Contract_id"], name: "index_enquiries_on_Contract_id"
   end
 
   create_table "finances", force: :cascade do |t|
@@ -122,6 +120,16 @@ ActiveRecord::Schema.define(version: 20171205234948) do
     t.string "email_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "Contract_id"
+    t.integer "Enquiry_id"
+    t.index ["Contract_id"], name: "index_line_items_on_Contract_id"
+    t.index ["Enquiry_id"], name: "index_line_items_on_Enquiry_id"
   end
 
   create_table "provinces", force: :cascade do |t|
