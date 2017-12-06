@@ -1,50 +1,21 @@
-<br/>
-<!DOCTYPE html>
-<html lang="en">
+<%= render partial: 'common/headerLog' %>
+<h2>Please Sign The Contract!</h2>
 
-  <head>
+<%= form_for(:post, :url => contracts_path) do |enq| %>
+  <p>
+    <%= enq.label :Description %></br>
+    <%= enq.text_field :description %>
+  </p>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  </br>
+  <p>
+    <%= enq.label :Category %><br/>
+    <%= enq.collection_select :Ratingy_id, Rating.order(:descrtiption_rating), :id, :descrtiption_rating, prompt: 'Rate Please' %>
+  </p>
 
-    <title>Heroic Features - Start Bootstrap Template</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="app/assets/stylesheets/heroic-features.css" rel="stylesheet">
-
-  </head>
-  <body>
-    <!-- Page Content -->
-    <div class="container">
-
-      <!-- Page Features -->
-      <div class="row text-center">
-        <% @students.each do |cat| %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="<%= cat.category.image %>" alt="">
-            <div class="card-body">
-              <h4 class="card-title"><%= cat.first_name_student %></h4>
-              <p class="card-text"><%= cat.last_name_student %></p>
-              <p class="card-text">CATEGORY: <%= cat.category.description_category %></p>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container -->
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="app/assets/javascripts/jquery.min.js"></script>
-    <script src="app/assets/javascripts/bootstrap.bundle.min.js"></script>
-
-  </body>
-
-</html>
+  </br>
+  <p>
+    <%= enq.submit "Ready!"%>
+  </p>
+</br>
+<% end %>

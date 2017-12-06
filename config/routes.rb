@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'charges/new'
   get 'charges/create'
   get '/cart/index'
+  get '/cart/checkout'
+  post '/cart/checkout'
 
   post '/cart/:id' => 'cart#create', as: 'cart'
   post '/cart/destroy/:id' => 'cart#destroy', as: 'destroy'
@@ -12,6 +14,9 @@ Rails.application.routes.draw do
   get 'show/:id', to: 'home#show', as: 'show', id:/\d+/
   get '/about', to: 'home#about', as: 'about'
   get '/contacts', to: 'home#contacts', as: 'contacts'
+
+  post '/contract', to: 'contract#create', as: 'contracts'
+  get '/contract/services', to: 'contract#services', as: 'services'
 
   resources :new_enquiries, only: [:new, :create]
 

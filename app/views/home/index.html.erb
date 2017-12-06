@@ -44,7 +44,7 @@
                   <p class="card-text"><%= enquiry.content %></p>
                 </div>
                 <div class="card-footer">
-                  <a class="btn btn-primary" <%= link_to enquiry.title, show_path(enquiry) %></a>
+                  <p><%= button_to "Show Details", show_path(enquiry), :method => "get" %></p> 
                 </div>
               </div>
             </div>
@@ -58,7 +58,7 @@
                   <p class="card-text"><%= enquiry.content %></p>
                 </div>
                 <div class="card-footer">
-                  <a class="btn btn-primary" <%= link_to enquiry.title, show_path(enquiry) %></a>
+                  <p><%= button_to "Show Details", show_path(enquiry), :method => "get" %></p>
                 </div>
                 <div class="card-footer">
                   <%= form_tag cart_path(id: enquiry.id), method: 'post' do %>

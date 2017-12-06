@@ -1,28 +1,84 @@
-<%= render partial: 'common/headerLog' %>
-<%= debug session[:cart] %>
-<h1 class="display-3">Shopping Cart!</h1>
-<div class="row text-center">
-  <% @mycart.each do |cart| %>
-    <% @enquiry.each do |enq| %>
-      <% if cart == enq.id %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="<%= enq.category.image %>" alt="">
-            <div class="card-body">
-              <h4 class="card-title"><%= enq.business.name_business %></h4>
-              <p class="card-text"><%= enq.content %></p>
-              <p class="card-text">$<%= enq.category.service_fee %></p>
-                <%= form_tag destroy_path(id: enq.id), method: 'post' do %>
-                  <%= submit_tag "Don't make a contract" %>
-                <% end %>
-                <br/>
-                <%= form_tag destroy_path(id: enq.id), method: 'post' do %>
-                  <%= submit_tag "Procceed to Checkout" %>
-                <% end %>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="app/assets/stylesheets/heroic-features.css" rel="stylesheet">
+
+  </head>
+  <%= render partial: 'common/headerLog' %>
+  <%= debug session[:cart] %>
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <!-- Jumbotron Header -->
+      <header class="jumbotron my-4">
+        <h1 class="display-3">Our Students!</h1>
+          <div class="row text-center">
+            <% @students.each do |cat| %>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card">
+                <img class="card-img-top" src="<%= cat.category.image %>" alt="">
+                <div class="card-body">
+                  <h4 class="card-title"><%= cat.first_name_student %></h4>
+                  <p class="card-text"><%= cat.last_name_student %></p>
+                  <p class="card-text">CATEGORY: <%= cat.category.description_category %></p>
+                </div>
+              </div>
             </div>
+            <% end %>
           </div>
-        </div>
+      </header>
+      <!-- Page Features -->
+      <div class="row text-center">
+        <% @subtotal = 0 %>
+        <% @mycart.each do |cart| %>
+          <% @enquiry.each do |enq| %>
+            <% if cart == enq.id %>
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card">
+                <img class="card-img-top" src="<%= enq.category.image %>" alt="">
+                <div class="card-body">
+                  <h4 class="card-title"><%= enq.business.name_business %></h4>
+                  <p class="card-text"><%= enq.content %></p>
+                  <p class="card-text">$<%= enq.category.service_fee %></p>
+                  <% @subtotal = @subtotal + enq.category.service_fee %>
+                  <br/>
+                  <%= form_tag destroy_path(id: enq.id), method: 'post' do %>
+                    <%= submit_tag "Don't make a contract" %>
+                  <% end %>
+
+                </div>
+              </div>
+            </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        <% session[:subtotal] = @subtotal %>
+        Your subtotal is $ <%= @subtotal %> CAD
+      </div>
+
+      <%= form_for(:post, :url => cart_checkout_path) do |student| %>
+      <p>
+        <%= student.label :Student %><br/>
+        <%= student.collection_select :Student_id, Student.order(:last_name_student), :id, :last_name_student, prompt: 'Select Student' %>
+        <%= student.submit "Procceed To Checkout" %>
+      </p>
       <% end %>
-    <% end %>
-  <% end %>
-</div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="app/assets/javascripts/jquery.min.js"></script>
+    <script src="app/assets/javascripts/bootstrap.bundle.min.js"></script>
+
+    </body>
+</html>

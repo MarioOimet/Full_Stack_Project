@@ -4,6 +4,7 @@ class CartController < ApplicationController
   def index
     @mycart = session[:cart]
     @enquiry = Enquiry.includes(:business, :category)
+    @students = Student.all
   end
 
   def create
@@ -25,6 +26,30 @@ class CartController < ApplicationController
       end
     end
     redirect_to :action => :index
+  end
+
+  def checkout
+    @mycart = session[:cart]
+    @enquiry = Enquiry.includes(:business, :category)
+    @id_student = params[:Student_id].to_i
+    if business_signed_in? && !@id_student.nil?
+      @students = Student.all
+      @business = current_business
+      @business_info = Business.where('id LIKE ?', @business.id).first
+      @province = Province.where('id LIKE ?', @business_info.Province_id).first
+
+      @gst = @province.gst
+      @pst = @province.pst
+
+      @subtotal = session[:subtotal]
+
+      @finalpst = @pst.to_f * @subtotal.to_f
+      @finalgst = @gst.to_f * @subtotal.to_f
+      @grandtotal = @finalgst + @finalpst + @subtotal.to_f
+      session[:grandtotal] = @grandtotal
+    else
+      redirect_to business_session_path
+    end
   end
 
   def initialize_session

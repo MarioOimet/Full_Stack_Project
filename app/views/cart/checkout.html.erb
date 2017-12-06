@@ -1,0 +1,70 @@
+<%= render partial: 'common/headerLog' %>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="app/assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="app/assets/stylesheets/heroic-features.css" rel="stylesheet">
+
+  </head>
+  <%= render partial: 'common/headerLog' %>
+  <%= @subtotal.to_f %>
+  <%= @finalgst.to_f %>
+  <%= @finalpst.to_f %>
+  <%= @grandtotal.to_f %>
+  <body>
+    <!-- Page Content -->
+    <div class="container">
+      <!-- Jumbotron Header -->
+      <header class="jumbotron my-4">
+        <h1 class="display-3">Your Contract Details!</h1>
+        <p class="lead"><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
+          <% @mycart.each do |cart| %>
+            <% @enquiry.each do |enq| %>
+              <% if cart == enq.id %>
+              <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card">
+                  <img class="card-img-top" src="<%= enq.category.image %>" alt="">
+                  <div class="card-body">
+                    <h4 class="card-title"><%= enq.business.name_business %></h4>
+                    <p class="card-text"><%= enq.content %></p>
+                    <p class="card-text">$<%= enq.category.service_fee %></p>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+          <% end %>
+      </header>
+      <% @grandtotal %>
+      <div class="row text-center">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">SubTotal: $<%= @subtotal %>CAD</h4>
+              <h4 class="card-title">PST: $<%= @finalpst %>CAD</h4>
+              <h4 class="card-title">GST: $<%= @finalgst %>CAD</h4>
+              <h4 class="card-title">GrandTotal: $<%= @grandtotal %>CAD</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page Features -->
+      <p><%= button_to "Pay For Order", charges_new_path, :method => "get"%></p>
+    <!-- Bootstrap core JavaScript -->
+    <script src="app/assets/javascripts/jquery.min.js"></script>
+    <script src="app/assets/javascripts/bootstrap.bundle.min.js"></script>
+
+    </body>
+</html>
