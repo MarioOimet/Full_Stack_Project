@@ -17,7 +17,7 @@ class ChargesController < ApplicationController
      :customer    => @customer.id,
      :amount      => @grandtotal.to_i * 100,
      :description => 'Rails Stripe customer',
-     :currency    => 'usd'
+     :currency    => 'cad'
    )
    redirect_to services_path
   rescue Stripe::CardError => e

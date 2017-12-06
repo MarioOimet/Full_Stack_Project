@@ -2,7 +2,6 @@ class Enquiry < ApplicationRecord
 
   belongs_to :business, :class_name => 'Business', :foreign_key => "Business_id"
   belongs_to :category, :class_name => 'Category', :foreign_key => "Category_id"
-
   has_many :line_items
 
   # validates :title, :content, :Contract_id, presence:true
