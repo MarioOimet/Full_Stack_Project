@@ -4,7 +4,6 @@ class CartController < ApplicationController
   def index
     @mycart = session[:cart]
     @enquiry = Enquiry.includes(:business, :category)
-    @students = Student.all
   end
 
   def create
@@ -33,7 +32,6 @@ class CartController < ApplicationController
     @enquiry = Enquiry.includes(:business, :category)
 
     if business_signed_in?
-      @students = Student.all
       @business = current_business
       @business_info = Business.where('id LIKE ?', @business.id).first
       @province = Province.where('id LIKE ?', @business_info.Province_id).first

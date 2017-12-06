@@ -18,28 +18,9 @@
 
   </head>
   <%= render partial: 'common/headerLog' %>
-  <%= debug session[:cart] %>
   <body>
     <!-- Page Content -->
     <div class="container">
-      <!-- Jumbotron Header -->
-      <header class="jumbotron my-4">
-        <h1 class="display-3">Our Students!</h1>
-          <div class="row text-center">
-            <% @students.each do |cat| %>
-            <div class="col-lg-3 col-md-6 mb-4">
-              <div class="card">
-                <img class="card-img-top" src="<%= cat.category.image %>" alt="">
-                <div class="card-body">
-                  <h4 class="card-title"><%= cat.first_name_student %></h4>
-                  <p class="card-text"><%= cat.last_name_student %></p>
-                  <p class="card-text">CATEGORY: <%= cat.category.description_category %></p>
-                </div>
-              </div>
-            </div>
-            <% end %>
-          </div>
-      </header>
       <!-- Page Features -->
       <div class="row text-center">
         <% @subtotal = 0 %>
@@ -65,12 +46,13 @@
             <% end %>
           <% end %>
         <% end %>
-        <% session[:subtotal] = @subtotal %>
-        Your subtotal is $ <%= @subtotal %> CAD
+      <div class="card">
+        <h1 class="display-3"><% session[:subtotal] = @subtotal %>
+        Your subtotal is: $<%= @subtotal %> CAD</h1></br>
       </div>
       <p>
       <%= form_for(:post, :url => cart_checkout_path) do |student| %>
-        <%= student.submit "Procceed To Checkout" %>
+        <%= student.submit "Procceed To Checkout" %></br>
       </p>
       <% end %>
     <!-- Bootstrap core JavaScript -->

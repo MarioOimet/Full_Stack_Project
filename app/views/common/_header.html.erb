@@ -43,6 +43,18 @@
             <li class="nav-item">
               <p><%= button_to "LOGOUT", destroy_business_session_path, :method => "delete" %></p>
             </li>
+            <li>
+              <% if business_signed_in? %>
+                <%= link_to cart_index_path do %>
+                  <%= image_tag("shop-cart-icon", :alt => "Shopping Cart") %>
+                <% end %>
+              <% end %>
+              <% if !business_signed_in? %>
+                <%= link_to new_business_session_path do %>
+                  <%= image_tag("shop-cart-icon", :alt => "Shopping Cart") %>
+                <% end %>
+              <% end %>
+            </li>
           <% end %>
         </ul>
       </div>

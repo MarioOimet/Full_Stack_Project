@@ -24,6 +24,10 @@ class ContractController < ApplicationController
       end
     end
 
+    def services
+      @students = Student.all
+    end
+
     private
     def initialize_session
       session[:contract] ||= []

@@ -19,17 +19,12 @@
 
   </head>
   <%= render partial: 'common/headerLog' %>
-  <%= @subtotal.to_f %>
-  <%= @finalgst.to_f %>
-  <%= @finalpst.to_f %>
-  <%= @grandtotal.to_f %>
   <body>
     <!-- Page Content -->
     <div class="container">
       <!-- Jumbotron Header -->
       <header class="jumbotron my-4">
         <h1 class="display-3">Your Contract Details!</h1>
-        <p class="lead"><%= image_tag("wizard-icon.png", :alt => "Wizard's Hat") %></p>
           <% @mycart.each do |cart| %>
             <% @enquiry.each do |enq| %>
               <% if cart == enq.id %>
@@ -40,6 +35,7 @@
                     <h4 class="card-title"><%= enq.business.name_business %></h4>
                     <p class="card-text"><%= enq.content %></p>
                     <p class="card-text">$<%= enq.category.service_fee %></p>
+                    <p class="card-text">$<%= enq.category.description_category %></p>
                   </div>
                 </div>
               </div>
@@ -48,7 +44,6 @@
           <% end %>
       </header>
       <% @grandtotal %>
-      <div class="row text-center">
         <div class="col-lg-3 col-md-6 mb-4">
           <div class="card">
             <div class="card-body">
@@ -59,7 +54,6 @@
             </div>
           </div>
         </div>
-      </div>
       <!-- Page Features -->
       <p><%= button_to "Pay For Order", charges_new_path, :method => "get"%></p>
     <!-- Bootstrap core JavaScript -->

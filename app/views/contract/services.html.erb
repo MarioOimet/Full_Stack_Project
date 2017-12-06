@@ -1,28 +1,45 @@
 <%= render partial: 'common/headerLog' %>
-<% current_business%>
-<h2>Please Sign The Contract!</h2>
+  <header class="jumbotron my-4">
+    <h1 class="display-3">Our Students!</h1>
+      <div class="row text-center">
+        <% @students.each do |cat| %>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="<%= cat.category.image %>" alt="">
+            <div class="card-body">
+              <h4 class="card-title"><%= cat.first_name_student %></h4>
+              <p class="card-text"><%= cat.last_name_student %></p>
+              <p class="card-text">CATEGORY: <%= cat.category.description_category %></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+  </header>
+  <% current_business %>
+  <h2>Please Sign The Contract!</h2>
 
-<%= form_for(:post, :url => contracts_path) do |enq| %>
-  <p>
-    <%= enq.label :Description %></br>
-    <%= enq.text_field :description %>
-  </p>
+  <%= form_for(:post, :url => contracts_path) do |enq| %>
+    <p>
+      <%= enq.label :Description %></br>
+      <%= enq.text_field :description %>
+    </p>
 
+    </br>
+    <p>
+      <%= enq.label :Category %><br/>
+      <%= enq.collection_select :Rating_id, Rating.order(:descrtiption_rating), :id, :descrtiption_rating, prompt: 'Rate Please' %>
+    </p>
+
+    </br>
+    <p>
+      <%= enq.label :Student %><br/>
+      <%= enq.collection_select :Student_id, Student.order(:last_name_student), :id, :last_name_student, prompt: 'Select Student' %>
+    </p>
+
+    </br>
+    <p>
+      <%= enq.submit "Ready!"%>
+    </p>
   </br>
-  <p>
-    <%= enq.label :Category %><br/>
-    <%= enq.collection_select :Rating_id, Rating.order(:descrtiption_rating), :id, :descrtiption_rating, prompt: 'Rate Please' %>
-  </p>
-
-  </br>
-  <p>
-    <%= enq.label :Student %><br/>
-    <%= enq.collection_select :Student_id, Student.order(:last_name_student), :id, :last_name_student, prompt: 'Select Student' %>
-  </p>
-
-  </br>
-  <p>
-    <%= enq.submit "Ready!"%>
-  </p>
-</br>
-<% end %>
+  <% end %>
