@@ -68,11 +68,8 @@
         <% session[:subtotal] = @subtotal %>
         Your subtotal is $ <%= @subtotal %> CAD
       </div>
-
-      <%= form_for(:post, :url => cart_checkout_path) do |student| %>
       <p>
-        <%= student.label :Student %><br/>
-        <%= student.collection_select :Student_id, Student.order(:last_name_student), :id, :last_name_student, prompt: 'Select Student' %>
+      <%= form_for(:post, :url => cart_checkout_path) do |student| %>
         <%= student.submit "Procceed To Checkout" %>
       </p>
       <% end %>

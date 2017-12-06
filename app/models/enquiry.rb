@@ -4,9 +4,7 @@ class Enquiry < ApplicationRecord
   belongs_to :category, :class_name => 'Category', :foreign_key => "Category_id"
   belongs_to :contract, :class_name => 'Contract', :foreign_key => "Contract_id"
 
-  validates :title, :content, presence:true
-
-
+  # validates :title, :content, presence:true
   def self.keyword_search(keywords)
     keywords = "%" + keywords + "%"
     @enquiry_found = Enquiry.includes(:category, :business).where("title LIKE ? OR content LIKE ?", keywords, keywords)

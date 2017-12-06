@@ -1,4 +1,5 @@
 <%= render partial: 'common/headerLog' %>
+<% current_business%>
 <h2>Please Sign The Contract!</h2>
 
 <%= form_for(:post, :url => contracts_path) do |enq| %>
@@ -10,7 +11,13 @@
   </br>
   <p>
     <%= enq.label :Category %><br/>
-    <%= enq.collection_select :Ratingy_id, Rating.order(:descrtiption_rating), :id, :descrtiption_rating, prompt: 'Rate Please' %>
+    <%= enq.collection_select :Rating_id, Rating.order(:descrtiption_rating), :id, :descrtiption_rating, prompt: 'Rate Please' %>
+  </p>
+
+  </br>
+  <p>
+    <%= enq.label :Student %><br/>
+    <%= enq.collection_select :Student_id, Student.order(:last_name_student), :id, :last_name_student, prompt: 'Select Student' %>
   </p>
 
   </br>

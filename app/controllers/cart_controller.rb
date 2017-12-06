@@ -31,8 +31,8 @@ class CartController < ApplicationController
   def checkout
     @mycart = session[:cart]
     @enquiry = Enquiry.includes(:business, :category)
-    @id_student = params[:Student_id].to_i
-    if business_signed_in? && !@id_student.nil?
+
+    if business_signed_in?
       @students = Student.all
       @business = current_business
       @business_info = Business.where('id LIKE ?', @business.id).first

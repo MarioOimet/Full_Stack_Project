@@ -30,6 +30,6 @@ class ContractController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:description, :created_at, :updated_at, :Student_id, :Rating_id).merge(Student_id: current_business.id)
+      params.require(:post).permit(:description, :created_at, :updated_at, :Student_id, :Rating_id)
     end
 end
